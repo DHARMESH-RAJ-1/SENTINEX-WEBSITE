@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<!-- Website - www.codingnepalweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Infinite Card Slider JavaScript | CodingNepal</title>
+    <style>
+        /* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  display: flex;
+  padding: 0 35px;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(to left top, #ffffff, #c6bfd4);
+}
+.wrappernews {
+  max-width: 1100px;
+  width: 100%;
+  position: relative;
+}
+.wrappernews i {
+  top: 50%;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  font-size: 1.25rem;
+  position: absolute;
+  text-align: center;
+  line-height: 50px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.23);
+  transform: translateY(-50%);
+  transition: transform 0.1s linear;
+}
+.wrappernews i:active{
+  transform: translateY(-50%) scale(0.85);
+}
+.wrappernews i:first-child{
+  left: -22px;
+}
+.wrappernews i:last-child{
+  right: -22px;
+}
+.wrappernews .carouselnews{
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% / 3) - 12px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 16px;
+  border-radius: 8px;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.carouselnews::-webkit-scrollbar {
+  display: none;
+}
+.carouselnews.no-transition {
+  scroll-behavior: auto;
+}
+.carouselnews.dragging {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+.carouselnews.dragging .cardnews {
+  cursor: grab;
+  user-select: none;
+}
+.carouselnews :where(.cardnews, .imgnews) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carouselnews .cardnews {
+  scroll-snap-align: start;
+  height: 450px;
+  list-style: none;
+  background: #fff;
+  cursor: pointer;
+  padding-bottom: 15px;
+  flex-direction: column;
+  border-radius: 8px;
+}
+.carouselnews .cardnews .imgnews {
+  background: #ffffff;
+  height: 140px;
+  width: 148px;
+  border-radius: 20px;
+}
+.cardnews .imgnews img {
+  width: 350px;
+  height: 300px;
+  border-radius: 20px;
+  object-fit: cover;
+  padding-bottom: 70px;
+  border: 4px solid #fff;
+}
+.carouselnews .cardnews h2 {
+  font-weight: 500;
+  font-size: 1.56rem;
+  margin: 30px 0 5px;
+  padding-top: 500px;
+}
+.carouselnews .cardnews span {
+  color: #6A6D78;
+  font-size: 1.31rem;
+}
+
+@media screen and (max-width: 900px) {
+  .wrappernews .carouselnews {
+    grid-auto-columns: calc((100% / 2) - 9px);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .wrappernews .carouselnews {
+    grid-auto-columns: 100%;
+  }
+}
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fontawesome Link for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="wrappernews">
+      <i id="left" class="fa-solid fa-angle-left"></i>
+      <ul class="carouselnews">
+        <li class="cardnews">
+          <div class="imgnews"><img src="news1.jpg" alt="img" draggable="false"></div>
+          <p>Revised criminal law Bills were introduced in the Parliament on December 12 after incorporating recommendations by a parliamentary committee — what are the key changes and the existing concerns?</p>
+          <span><button><a href="https://www.thehindu.com/news/national/revised-criminal-law-bills-the-key-changes-explained/article67637348.ece"> Read more</a></button></span>
+        </li>
+        <li class="cardnews">
+          <div class="imgnews"><img src="news2.avif" alt="img" draggable="false"></div>
+          <p>Amendments to IT Act decriminalise offences, increase penalties</p>
+          <span><button><a href="https://www.hindustantimes.com/india-news/amendments-to-it-act-decriminalise-offences-increase-penalties-101701517892813.html"> Read more</a></button></span>
+        </li>
+        <li class="cardnews">
+          <div class="imgnews"><img src="new3.jpeg" alt="img" draggable="false"></div>
+          <p>Despite gazette notification, confusion over implementation of newly-enacted criminal laws</p>
+          <span><button><a href="https://www.thehindu.com/news/national/despite-gazette-notification-confusion-over-implementation-of-three-criminal-laws/article67677009.ece">Read More</a></button></span>
+        </li>
+        <li class="cardnews">
+          <div class="imgnews"><img src="news4.avif" alt="img" draggable="false"></div>
+          <p>New criminal laws to come into effect from July 1: Here's what has changed</p>
+          <span><button><a href="https://www.indiatoday.in/law/story/new-criminal-laws-to-come-into-effect-from-july-1-what-are-the-changes-2506610-2024-02-24">Read More</a></button></span>
+        </li>
+        <li class="cardnews">
+          <div class="imgnews"><img src="news5.webp" alt="img" draggable="false"></div>
+          <p>Cabinet approves implementation of Umbrella Scheme on 'safety of womem'</p>
+          <span><button><a href="http://timesofindia.indiatimes.com/articleshow/107891805.cms?utm_source=contentofinterest&utm_medium=text&utm_campaign=cppst">Read More</a></button></span>
+        </li>
+        <li class="cardnews">
+          <div class="imgnews"><img src="news6.webp" alt="img" draggable="false"></div>
+          <p>Latest Crime Rate Report of India 2024, State Wise Crime Rate </p>
+          <span><button><a href="https://www.adda247.com/upsc-exam/crime-rate/"></a>Read More</button></span>
+        </li>
+      </ul>
+      <i id="right" class="fa-solid fa-angle-right"></i>
+    </div>
+    <script>
+        const wrapper = document.querySelector(".wrappernews");
+const carousel = document.querySelector(".carouselnews");
+const firstCardWidth = carousel.querySelector(".cardnews").offsetWidth;
+const arrowBtns = document.querySelectorAll(".wrappernews i");
+const carouselChildrens = [...carousel.children];
+
+let isDragging = false, isAutoPlay = true, startX, startScrollLeft, timeoutId;
+
+// Get the number of cards that can fit in the carousel at once
+let cardPerView = Math.round(carousel.offsetWidth / firstCardWidth);
+
+// Insert copies of the last few cards to beginning of carousel for infinite scrolling
+carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
+    carousel.insertAdjacentHTML("afterbegin", card.outerHTML);
+});
+
+// Insert copies of the first few cards to end of carousel for infinite scrolling
+carouselChildrens.slice(0, cardPerView).forEach(card => {
+    carousel.insertAdjacentHTML("beforeend", card.outerHTML);
+});
+
+// Scroll the carousel at appropriate postition to hide first few duplicate cards on Firefox
+carousel.classList.add("no-transition");
+carousel.scrollLeft = carousel.offsetWidth;
+carousel.classList.remove("no-transition");
+
+// Add event listeners for the arrow buttons to scroll the carousel left and right
+arrowBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        carousel.scrollLeft += btn.id == "left" ? -firstCardWidth : firstCardWidth;
+    });
+});
+
+const dragStart = (e) => {
+    isDragging = true;
+    carousel.classList.add("dragging");
+    // Records the initial cursor and scroll position of the carousel
+    startX = e.pageX;
+    startScrollLeft = carousel.scrollLeft;
+}
+
+const dragging = (e) => {
+    if(!isDragging) return; // if isDragging is false return from here
+    // Updates the scroll position of the carousel based on the cursor movement
+    carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
+}
+
+const dragStop = () => {
+    isDragging = false;
+    carousel.classList.remove("dragging");
+}
+
+const infiniteScroll = () => {
+    // If the carousel is at the beginning, scroll to the end
+    if(carousel.scrollLeft === 0) {
+        carousel.classList.add("no-transition");
+        carousel.scrollLeft = carousel.scrollWidth - (2 * carousel.offsetWidth);
+        carousel.classList.remove("no-transition");
+    }
+    // If the carousel is at the end, scroll to the beginning
+    else if(Math.ceil(carousel.scrollLeft) === carousel.scrollWidth - carousel.offsetWidth) {
+        carousel.classList.add("no-transition");
+        carousel.scrollLeft = carousel.offsetWidth;
+        carousel.classList.remove("no-transition");
+    }
+
+    // Clear existing timeout & start autoplay if mouse is not hovering over carousel
+    clearTimeout(timeoutId);
+    if(!wrapper.matches(":hover")) autoPlay();
+}
+
+const autoPlay = () => {
+    if(window.innerWidth < 800 || !isAutoPlay) return; // Return if window is smaller than 800 or isAutoPlay is false
+    // Autoplay the carousel after every 2500 ms
+    timeoutId = setTimeout(() => carousel.scrollLeft += firstCardWidth, 2500);
+}
+autoPlay();
+
+carousel.addEventListener("mousedown", dragStart);
+carousel.addEventListener("mousemove", dragging);
+document.addEventListener("mouseup", dragStop);
+carousel.addEventListener("scroll", infiniteScroll);
+wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
+wrapper.addEventListener("mouseleave", autoPlay);
+    </script>
+
+  </body>
+</html>
